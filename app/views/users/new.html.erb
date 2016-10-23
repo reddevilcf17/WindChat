@@ -1,0 +1,14 @@
+<ul class="list-inline">
+  <li class="list-inline-item"><h4 class="text-primary">Create a new account or </h4></li>
+  <li class="list-inline-item"><%= link_to "Log In with Facebook", "/auth/facebook", id: "sign_in", class:"btn btn-primary form-control" %></li>
+</ul>
+
+<div class="row">
+	<div class="col-md-5">
+		<%= render 'form', user: @user %>	
+		<%= link_to 'Back', users_path %>
+	</div>
+</div>
+
+
+

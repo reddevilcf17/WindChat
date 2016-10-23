@@ -1,0 +1,26 @@
+@import "bootstrap";
+@import "font-awesome";
+
+.recipients-email {
+    white-space: normal;
+    display: inline-block;
+
+    .alert{
+    	padding-top: 0px;
+    	padding-bottom: 0px; 
+    }
+}
+
+.recipients-email-input{
+	background-color: transparent;
+	border: none;
+	pointer-events: none;
+}
+
+.message-status {
+	margin-left: 5px;
+}
+
+.link-friend-list{
+    margin-left: 10px;
+}

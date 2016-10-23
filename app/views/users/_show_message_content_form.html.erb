@@ -1,0 +1,75 @@
+<!-- The scrollable area -->
+<div class="jumbotro form-control data-spy="scroll" data-offset="50" style="height: 400px; overflow-y: scroll; position: relative;">
+
+	<% if @messages_list %>		
+		<% if @messages_list.count == 0 %>
+			<p class="text-muted">There is no message to show</p>
+		<% else %>
+
+			<% @current_sender_id = 0 %>
+
+			<% @messages_list.each do |mess| %>
+				<% if @current_sender_id == 0 %>
+					<h5 class="text-primary"><%= mess.user.name %></h5>	
+					<% if mess.user_id == current_user.id  %>
+						<cite> All of your sent messages here</cite>
+						<br/>
+					<% end %>
+					<% @current_sender_id = 1 %>			
+				<% end %>
+
+				<div class="panel-group">
+				  <div class="card">
+				    <div class="card-header">
+				      <h6 class="mb-0">
+					    <a data-toggle="collapse" href="<%= '#' + 'clazz' + mess.id.to_s %>" onclick="
+					    <% unless mess.user_id == current_user.id %>
+					    	windChat_update_message(<%= mess.id %>);	
+					    <% end %>
+					    " >				    	
+					      	<div class="row">
+					      		<div class="col-md-7">
+						        	<p class="text-muted"><%= mess.title %> 						        	
+						        	</p>
+									
+					      		</div>
+					      		<div class="col-md-5">
+					      			<span class="text-muted small pull-xs-right">
+										<% if mess.status == 2 && mess.user_id == current_user.id %>
+											<%= mess.updated_at.strftime('%c') %>
+										<% else %>
+											<%= mess.created_at.strftime('%c') %>	
+										<% end %>
+					      				
+					      				<% if mess.status == 1 %>
+							        		<i class="fa fa-circle message-status pull-xs-right" id="<%= 'message-status-' +  mess.id.to_s %>" style="color: red"></i>
+							        	<% else %>
+							        		<i class="fa fa-circle-o message-status pull-xs-right" id="<%= 'message-status-' +  mess.id.to_s %>" style="color: #818a91"></i>
+							        	<% end %>
+					      			</span>
+					      		</div>
+					      	</div>				      	
+				        </a>
+
+				      </h6>			      
+				    </div>
+				    	
+				    <% if mess.user_id != current_user.id && mess.status == 1 %>
+				    	<div id="<%= 'clazz' + mess.id.to_s %>" class="panel-collapse collapse">
+					      <div class="card-block">
+						      <p class="small"><%= mess.content %></p>				      			      	
+					      </div>
+					    </div>
+				    <% end %>
+				    
+				  </div>
+				</div>
+							
+			<% end %>
+		<% end %>		
+	<% end %>
+  
+</div>	
+
+
+

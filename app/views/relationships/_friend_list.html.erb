@@ -1,0 +1,9 @@
+<% if @relationships.nil? || @relationships.count < 0 %>
+	<p class="text_muted">You have no friend</p>
+<% else %>
+	<% @relationships.each do |relationship| %>
+		<li class="list-group-item"> <%= relationship.user.name %> 
+			<a href="#" data-remote="true" onclick="windChat_add_recipient('<%= relationship.user.email %>')" class="pull-xs-right" >Add as Recipient</a>
+		</li>
+	<% end %>
+<% end %>

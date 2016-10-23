@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-control">
+			<%= link_to 'Your Sent Message', message_path(current_user.id), method: 'get', remote: true, :class => 'list-group-item list-group-item-action' %>	
+		</div>
+		
+		<div class="messages-list form-control">
+			<%= render '/users/show_message_form' %>			
+		</div>		
+	</div>
+	
+	<div class="col-md-6 messages-content">
+		<%= render '/users/show_message_content_form' %>
+	</div>
+	<div class="col-md-2">
+		<%= link_to '+ New Message', new_message_path, :class => 'btn btn-secondary' %>
+		<hr/>
+		<%= link_to '+ Friends', new_relationship_path, :class => 'btn btn-secondary' %>		
+	</div>
+</div>

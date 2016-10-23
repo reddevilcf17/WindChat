@@ -6,9 +6,61 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
 
   <body>
-    <%= yield %>
+  	<div class="container">
+      <nav class="navbar navbar-light bg-faded">
+          <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+            &#9776;
+          </button>
+          <%= link_to root_path, :class => 'navbar-brand' do %>
+            <h1 class="text-primary">WindChat</h1>
+          <% end %>         
+          <div class="collapse navbar-toggleable-xs" id="navbar-header">
+            <ul class="nav navbar-nav">
+              <% if signed_in? %>                
+                <li class="nav-item">
+                  <%= link_to messages_page_path, :class => 'nav-link' do %>
+                    Messages
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_relationship_path, :class => 'nav-link' do %>
+                    Friends
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to logout_path, method: 'delete', :class => 'nav-link' do %>
+                    Log Out
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to login_path, :class => 'nav-link' do %>
+                    Log In
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_path, :class => 'nav-link' do %>
+                    Sign Up
+                  <% end %>
+                </li>                
+              <% end %>
+              
+            </ul>
+          </div>
+        </nav>
+        <% if flash.any? %>
+
+            <%= flash_messages(flash) %>            
+
+        <% end %>
+        <div class="jumbotron">
+      	   <%= yield %>
+        </div>
+    </div>
   </body>
 </html>

@@ -1,0 +1,26 @@
+<%= form_for(user) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name, class: "form-control", placeholder: "Your Name"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email, class: "form-control", placeholder: "Your Email"  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password, 'Password' %>
+    <%= f.text_field :password, placeholder: "Your Password", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation, 'Confirm password' %>
+    <%= f.text_field :password_confirmation, placeholder: "Re-enter the password", class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Sign up Your Account', class: "btn btn-secondary form-control" %>
+  </div>
+
+<% end %>
