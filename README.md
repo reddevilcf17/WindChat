@@ -6,7 +6,7 @@ Submitted by: **Nguyen Thanh Hung**
 
 Time spent: **22** hours
 
-URL: **Insert your Heroku URL here**
+URL: **https://mywindchat.herokuapp.com/**
 
 ## User Stories
 
